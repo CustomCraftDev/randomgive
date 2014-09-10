@@ -14,6 +14,8 @@ message:
   color1: YELLOW
   color2: WHITE
   color3: YELLOW
+  
+
 config-infos:
   info0: dont leave color or line blank !!!
   info1: colors -> http://jd.bukkit.org/rb/apidocs/org/bukkit/ChatColor.html
