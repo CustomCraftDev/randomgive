@@ -1,0 +1,20 @@
+name: Randomgive
+main: randomgive.randomgive
+description: Requested Plugin by undeaD_D
+version: 1.0
+author: DieFriiks
+authors: [DieFriiks, CustomCraftDev, undeaD_D]
+databse: false
+commands:
+     rreload:
+          usage: /<command>
+          description: reloads plugin on runtime.
+     rdisable:
+          usage: /<command>
+          description: disables plugin on runtime.
+     rreset:
+          usage: /<command>
+          description: resets config and reloads on runtime.
+     rgive:
+          usage: /<command>
+          description: gives you a random item.
