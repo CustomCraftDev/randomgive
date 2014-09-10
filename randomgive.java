@@ -36,9 +36,9 @@ public class randomgive extends JavaPlugin {
      */
 	public void onEnable() {
 		loadConfig();
-    	if(debug){
-    		say("Config loaded");
-    	}
+    		if(debug){
+    			say("Config loaded");
+    		}
 	}
 
 	
@@ -49,9 +49,9 @@ public class randomgive extends JavaPlugin {
 		try {
 			saveConfig();
 		} catch (Exception e) {
-        	if(debug){
-        		e.printStackTrace();
-        	}
+        		if(debug){
+        			e.printStackTrace();
+        		}
 		}
 	}
 
@@ -180,35 +180,36 @@ public class randomgive extends JavaPlugin {
      * reload
      */
     private void reload(){
- 	   	try {
- 	   		// Remove unused variables and objects
-			    config = null;
-			    random = null;
-
-			    debug = null;
-			    items = null;
+ 	   try {
+ 	   	// Remove unused objects
+		    config = null;
+		    random = null;
 			    
-			    message1 = null;
-			    message2 = null;
-			    message3 = null;
-			    
-			    color = null;
+		    debug = null;
+		    items = null;
+		    color = null;
+		    
+		    message1 = null;
+		    message2 = null;
+		    message3 = null;
+		    
 
-			// Run java garbage collector to delete unused things
-			    System.gc();
-			
-			// load everything again
-				this.reloadConfig();
-				loadConfig();
-			if(debug){
-				say("reload successfull");
-			}
-			
- 	   	} catch (Exception e) {
-        	if(debug){
-        		e.printStackTrace();
+		    
+		// Run java garbage collector to delete unused things
+		    System.gc();
+		
+		// load everything again -.-
+			this.reloadConfig();
+			loadConfig();
+		if(debug){
+			say("reload successfull");
+		}
+		
+	   	} catch (Exception e) {
+        	    	if(debug){
+        			e.printStackTrace();
+        		}
         	}
-        }
     }
     
     
