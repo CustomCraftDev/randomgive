@@ -25,9 +25,7 @@ public class randomgive extends JavaPlugin {
     Boolean debug;
     List<String> items;
     Random random;
-    String message1;
-    String message2;
-    String message3;
+    String[] message;
     ChatColor[] color;
     
 	
@@ -127,27 +125,27 @@ public class randomgive extends JavaPlugin {
 		
 		ItemStack item  = new ItemStack(material, amount);
 		p.getInventory().addItem(item);
+
+		message[3] = message[0].replace("$PlayerName$", p.getName());
+		message[4] = message[1].replace("$PlayerName$", p.getName());
+		message[5] = message[2].replace("$PlayerName$", p.getName());
 		
-		message1 = message1.replace("$PlayerName$", p.getName());
-		message2 = message2.replace("$PlayerName$", p.getName());
-		message3 = message3.replace("$PlayerName$", p.getName());
+		message[3] = message[3].replace("$ItemName$", material.toString());
+		message[4] = message[4].replace("$ItemName$", material.toString());
+		message[5] = message[5].replace("$ItemName$", material.toString());
 		
-		message1 = message1.replace("$ItemName$", material.toString());
-		message2 = message2.replace("$ItemName$", material.toString());
-		message3 = message3.replace("$ItemName$", material.toString());
+		message[3] = message[3].replace("$ItemAmount$", "" + amount);
+		message[4] = message[4].replace("$ItemAmount$", "" + amount);
+		message[5] = message[5].replace("$ItemAmount$", "" + amount);
 		
-		message1 = message1.replace("$ItemAmount$", "" + amount);
-		message2 = message2.replace("$ItemAmount$", "" + amount);
-		message3 = message3.replace("$ItemAmount$", "" + amount);
-		
-		if(!message1.startsWith("$NONE$")){
-			this.getServer().broadcastMessage(color[0] + message1);
+		if(!message[0].startsWith("$NONE$")){
+			this.getServer().broadcastMessage(color[0] + message[3]);
 		}
-		if(!message2.startsWith("$NONE$")){
-			this.getServer().broadcastMessage(color[1] + message2);
+		if(!message[0].startsWith("$NONE$")){
+			this.getServer().broadcastMessage(color[1] + message[4]);
 		}		
-		if(!message3.startsWith("$NONE$")){
-			this.getServer().broadcastMessage(color[2] + message3);
+		if(!message[0].startsWith("$NONE$")){
+			this.getServer().broadcastMessage(color[2] + message[5]);
 		}
 	}
 
@@ -165,9 +163,10 @@ public class randomgive extends JavaPlugin {
 		debug = config.getBoolean("debug");
 		items = (List<String>) config.getStringList("items");
 		
-		message1 = config.getString("message.line1");
-		message2 = config.getString("message.line2");
-		message3 = config.getString("message.line3");
+		message = new String[6];
+		message[0] = config.getString("message.line1");
+		message[1] = config.getString("message.line2");
+		message[2] = config.getString("message.line3");
 		
 		color = new ChatColor[3];
 		color[0] = ChatColor.valueOf(config.getString("message.color1"));
@@ -189,12 +188,9 @@ public class randomgive extends JavaPlugin {
 		    items = null;
 		    color = null;
 		    
-		    message1 = null;
-		    message2 = null;
-		    message3 = null;
-		    
+		    message = null;
+		    color = null;
 
-		    
 		// Run java garbage collector to delete unused things
 		    System.gc();
 		
