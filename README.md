@@ -1,4 +1,4 @@
-randomgive
+randomgive v 2.0
 ==========
 
 Requested Plugin by undeaD_D
