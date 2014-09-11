@@ -121,24 +121,24 @@ public class randomgive extends JavaPlugin {
 		p.getInventory().addItem(item);
 
 		if(!message[0].startsWith("$NONE$")){
-				message[3] = message[0].replaceAll("\\$PlayerName\\$", p.getName());
-				message[3] = message[3].replaceAll("\\$ItemName\\$", material.toString());
-				message[3] = message[3].replaceAll("\\$World\\$", p.getWorld().getName());
-				message[3] = message[3].replaceAll("\\$ItemAmount\\$", "" + amount);
+				message[3] = message[0].replace("$PlayerName$", p.getName());
+				message[3] = message[3].replace("$ItemName$", material.toString());
+				message[3] = message[3].replace("$World$", p.getWorld().getName());
+				message[3] = message[3].replace("$ItemAmount$", "" + amount);
 			this.getServer().broadcastMessage(color[0] + message[3]);
 		}
 		if(!message[0].startsWith("$NONE$")){
-				message[4] = message[1].replaceAll("\\$PlayerName\\$", p.getName());
-				message[4] = message[4].replaceAll("\\$ItemName\\$", material.toString());
-				message[4] = message[4].replaceAll("\\$World\\$", p.getWorld().getName());
-				message[4] = message[4].replaceAll("\\$ItemAmount\\$", "" + amount);
+				message[4] = message[1].replace("$PlayerName$", p.getName());
+				message[4] = message[4].replace("$ItemName$", material.toString());
+				message[4] = message[4].replace("$World$", p.getWorld().getName());
+				message[4] = message[4].replace("$ItemAmount$", "" + amount);
 			this.getServer().broadcastMessage(color[1] + message[4]);
 		}		
 		if(!message[0].startsWith("$NONE$")){
-				message[5] = message[2].replaceAll("\\$PlayerName\\$", p.getName());
-				message[5] = message[5].replaceAll("\\$ItemName\\$", material.toString());
-				message[5] = message[5].replaceAll("\\$World\\$", p.getWorld().getName());
-				message[5] = message[5].replaceAll("\\$ItemAmount\\$", "" + amount);
+				message[5] = message[2].replace("$PlayerName$", p.getName());
+				message[5] = message[5].replace("$ItemName$", material.toString());
+				message[5] = message[5].replace("$World$", p.getWorld().getName());
+				message[5] = message[5].replace("$ItemAmount$", "" + amount);
 			this.getServer().broadcastMessage(color[2] + message[5]);
 		}
 	}
