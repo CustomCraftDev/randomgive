@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * @author DieFriiks / CustomCraftDev / undeaD_D
  * @category randomgive plugin
- * @version 1.0
+ * @version 2.0
  */
 public class randomgive extends JavaPlugin {
 	
@@ -34,9 +34,7 @@ public class randomgive extends JavaPlugin {
      */
 	public void onEnable() {
 		loadConfig();
-    		if(debug){
-    			say("Config loaded");
-    		}
+    		say("Config loaded");
 	}
 
 	
@@ -47,9 +45,9 @@ public class randomgive extends JavaPlugin {
 		try {
 			saveConfig();
 		} catch (Exception e) {
-        		if(debug){
-        			e.printStackTrace();
-        		}
+	        	if(debug){
+	        		e.printStackTrace();
+	        	}
 		}
 	}
 
@@ -59,7 +57,7 @@ public class randomgive extends JavaPlugin {
      * @param sender - command sender
      * @param cmd - command
      * @param label
-     * @return boolean
+     * @return true or false
      */
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if ((sender instanceof Player)) {
@@ -68,10 +66,8 @@ public class randomgive extends JavaPlugin {
 			// rdisable command
 			if (cmd.getName().equalsIgnoreCase("rdisable") && p.isOp()) {
 					this.setEnabled(false);
-					p.sendMessage("disabled randomgive ...");
-					if(debug){
-						say("Randomgive disabled by " + p.getName());
-					}
+					p.sendMessage(ChatColor.RED + "[Randomgive] was disabled");
+					say("Randomgive disabled by " + p.getName());
 				return true;
 			}
 			
@@ -80,43 +76,41 @@ public class randomgive extends JavaPlugin {
 				    File configFile = new File(getDataFolder(), "config.yml");
 				    configFile.delete();
 				    saveDefaultConfig();
+					p.sendMessage(ChatColor.RED + "[Randomgive] config reset");
 				    reload();
-					p.sendMessage("randomgive was reset ...");
-					if(debug){
-						say("Randomgive reset by " + p.getName());
-					}
+					p.sendMessage(ChatColor.RED + "[Randomgive] was reloaded");
+					say("Randomgive reset by " + p.getName());
 				return true;
 			}
 			
 			// rgive command
 			if (cmd.getName().equalsIgnoreCase("rgive")) {
+					random = new Random();
 					give(p, random.nextInt(items.size()));
 				return true;
 			}
 			// rreload command
 			if (cmd.getName().equalsIgnoreCase("rreload") && p.isOp()) {
 					reload();
-					p.sendMessage("reloaded randomgive ...");
-					if(debug){
-						say("Randomgive reloaded by " + p.getName());
-					}
+					p.sendMessage(ChatColor.RED + "[Randomgive] was reloaded");
+					say("Randomgive reloaded by " + p.getName());
 				return true;
 			}
 		}
 		
 		// commands from console
 		else{
-			say("Command ingame only ...");
+			System.out.println("[Randomgive] Command ingame only ...");
 			return true;
 		}
 		
-		// nothing to do here \o/
-		return false;
+	// nothing to do here \o/
+	return false;
 	}
 	
 	
 	/**
-     * add material to player inventory
+     * give basic material to player
      */
 	private void give(Player p, Integer index) {
 		String[] unchecked = items.get(index).split(":");
@@ -126,25 +120,25 @@ public class randomgive extends JavaPlugin {
 		ItemStack item  = new ItemStack(material, amount);
 		p.getInventory().addItem(item);
 
-		message[3] = message[0].replace("$PlayerName$", p.getName());
-		message[4] = message[1].replace("$PlayerName$", p.getName());
-		message[5] = message[2].replace("$PlayerName$", p.getName());
-		
-		message[3] = message[3].replace("$ItemName$", material.toString());
-		message[4] = message[4].replace("$ItemName$", material.toString());
-		message[5] = message[5].replace("$ItemName$", material.toString());
-		
-		message[3] = message[3].replace("$ItemAmount$", "" + amount);
-		message[4] = message[4].replace("$ItemAmount$", "" + amount);
-		message[5] = message[5].replace("$ItemAmount$", "" + amount);
-		
 		if(!message[0].startsWith("$NONE$")){
+				message[3] = message[0].replaceAll("\\$PlayerName\\$", p.getName());
+				message[3] = message[3].replaceAll("\\$ItemName\\$", material.toString());
+				message[3] = message[3].replaceAll("\\$World\\$", p.getWorld().getName());
+				message[3] = message[3].replaceAll("\\$ItemAmount\\$", "" + amount);
 			this.getServer().broadcastMessage(color[0] + message[3]);
 		}
 		if(!message[0].startsWith("$NONE$")){
+				message[4] = message[1].replaceAll("\\$PlayerName\\$", p.getName());
+				message[4] = message[4].replaceAll("\\$ItemName\\$", material.toString());
+				message[4] = message[4].replaceAll("\\$World\\$", p.getWorld().getName());
+				message[4] = message[4].replaceAll("\\$ItemAmount\\$", "" + amount);
 			this.getServer().broadcastMessage(color[1] + message[4]);
 		}		
 		if(!message[0].startsWith("$NONE$")){
+				message[5] = message[2].replaceAll("\\$PlayerName\\$", p.getName());
+				message[5] = message[5].replaceAll("\\$ItemName\\$", material.toString());
+				message[5] = message[5].replaceAll("\\$World\\$", p.getWorld().getName());
+				message[5] = message[5].replaceAll("\\$ItemAmount\\$", "" + amount);
 			this.getServer().broadcastMessage(color[2] + message[5]);
 		}
 	}
@@ -154,7 +148,6 @@ public class randomgive extends JavaPlugin {
      * load config settings
      */
 	private void loadConfig() {
-		random = new Random();
 		
 		config = getConfig();
 		config.options().copyDefaults(true);
@@ -179,33 +172,29 @@ public class randomgive extends JavaPlugin {
      * reload
      */
     private void reload(){
- 	   try {
- 	   	// Remove unused objects
-		    config = null;
-		    random = null;
-			    
-		    debug = null;
-		    items = null;
-		    color = null;
-		    
-		    message = null;
-		    color = null;
+ 	   	try {
+ 	   		// Remove unused variables and objects
+			    config = null;
+			    random = null;
 
-		// Run java garbage collector to delete unused things
-		    System.gc();
-		
-		// load everything again -.-
-			this.reloadConfig();
-			loadConfig();
-		if(debug){
-			say("reload successfull");
-		}
-		
-	   	} catch (Exception e) {
-        	    	if(debug){
-        			e.printStackTrace();
-        		}
+			    debug = null;
+			    items = null;
+			    
+			    message = null;
+			    color = null;
+
+			// Run java garbage collector to delete unused things
+			    System.gc();
+			
+			// load everything again
+				this.reloadConfig();
+				loadConfig();
+			
+ 	   	} catch (Exception e) {
+        	if(debug){
+        		e.printStackTrace();
         	}
+        }
     }
     
     
