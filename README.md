@@ -11,7 +11,8 @@ UPDATE:
  - changed plugin version to v 3.0
 
 download: http://custom-craft.de/owncloud/public.php?service=files&t=0d53516667b5d2afb1292f0a8bcece51                     
-password: randomgive                                                                                                       
+password: randomgive   
+
 ==========
 
 have fun ;)
