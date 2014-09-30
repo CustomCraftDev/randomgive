@@ -1,20 +1,58 @@
 name: Randomgive
 main: randomgive.randomgive
-description: Requested Plugin by undeaD_D
-version: 2.0
-author: DieFriiks
-authors: [DieFriiks, CustomCraftDev, undeaD_D]
+description: Randomgive by undeaD_D
+version: 3.0
+author: undeaD_D
+authors: [DieFriiks, CustomCraftDev]
 databse: false
 commands:
      rreload:
-          usage: /<command>
+          usage: /rreload
           description: reloads plugin on runtime.
+          permission: random.reload
      rdisable:
-          usage: /<command>
+          usage: /rdisable
           description: disables plugin on runtime.
+          permission: random.disable
      rreset:
-          usage: /<command>
+          usage: /rreset
           description: resets config and reloads on runtime.
+          permission: random.reset
      rgive:
-          usage: /<command>
-          description: gives you a random item.
+          usage: /rgive <category>
+          description: gives you a random item from the given category.
+          permission: random.give
+     rothers:
+          usage: /rothers <category> <player>
+          description: gives a random item from the given category to a player.
+          permission: random.others
+     rlist:
+          usage: /rlist
+          description: lists every category.
+          permission: random.list
+permissions:
+  random.*:
+    description: gives access to all random permissions
+    children:
+      random.reload: true
+      random.disable: true
+      random.reset: true
+      random.give: true
+      random.others: true
+      random.list: true
+  random.reload:
+    description: reloads randomgive at runtime
+  random.disable:
+    description: disables randomgive till server reload/restart
+  random.reset:
+    description: resets randomgive config to default
+  random.give:
+    description: main command from randomgive
+    children:
+      random.list: true
+  random.others:
+    description: execute /rgive for another player
+    children:
+      random.list: true 
+  random.list:
+    description: lists every category
