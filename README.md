@@ -3,8 +3,10 @@ randomgive v 3.0
 
 UPDATE:                                                                                                                   
  - added colorcode support 
+ - added console support (except for /rgive)
  - added categories for randomgive
- - added command to give other glayers random items
+ - added /rlist command to list all categories ^^
+ - added command to give other glayers random items ( -> /rothers <category> <player>)
  - fixed permissions O,o
  - added no permission message
  - added message toggle (more info in config.yml -> info8 ...)
