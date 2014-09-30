@@ -1,9 +1,17 @@
-randomgive v 2.0
+randomgive v 3.0
 ==========
 
-Requested Plugin by undeaD_D
+UPDATE:                                                                                                                   
+ - added colorcode support 
+ - added categories for randomgive
+ - added command to give other glayers random items
+ - fixed permissions O,o
+ - added no permission message
+ - added message toggle (more info in config.yml -> info8 ...)
+ - changed plugin version to v 3.0
 
-Download: http://custom-craft.de/owncloud/public.php?service=files&t=90b4441c49e361a32cae079353e6c9d3         
-Password: randomgive
-
+download: http://custom-craft.de/owncloud/public.php?service=files&t=0d53516667b5d2afb1292f0a8bcece51                     
+password: randomgive                                                                                                       
 ==========
+
+have fun ;)
