@@ -1,35 +1,43 @@
 # @author DieFriiks / CustomCraftDev / undeaD_D
-# @link www.custom-craft.de
+# @version 3.0
 # @github https://github.com/CustomCraftDev/randomgive
 
-items:
-- DIRT:64
-- CHAINMAIL_LEGGINGS:1
-- GREEN_RECORD:1
-- SPONGE:999999
+category:
+  - food
+  - fun
+  - undeaD
+
+undeaD:
+  - DIAMOND_BLOCK:999999
+
+food:
+  - COOKIE:64
+  - CARROT:1
+  - CAKE:1
+  - BREAD:64
+
+fun:
+  - JACK_O_LANTERN:64
+  - CHAINMAIL_LEGGINGS:1
+  - GREEN_RECORD:1
+  - SPONGE:64
 
 message:
-  line1: '-- Randomgive ---------------'
-  line2: '    [$World$] $PlayerName$ got $ItemAmount$ $ItemName$.'
-  line3: '-- by UndeaD_D --------------'
-  color1: YELLOW
-  color2: WHITE
-  color3: YELLOW
+  type: true
+  line1: '&e-- Randomgive  --------------'
+  line2: '&e    [&r$World$&e] &r$PlayerName$ got $ItemAmount$ $ItemName$.'
+  line3: '&e-- by UndeaD_D --------------'
+  nopermission: '&cYou shall not pass'
   
 config-infos:
-  info0: dont leave any line blank !!!
-  info1: colors -> http://jd.bukkit.org/rb/apidocs/org/bukkit/ChatColor.html
+  info0: never leave any line blank !!!
+  info1: colors -> https://camo.githubusercontent.com/293b658326268d54a3cd8dbda80db7738f7bf322/687474703a2f2f736f6369657479616e6472656c6967696f6e2e636f6d2f6d696e6563726166742f77702d636f6e74656e742f75706c6f6164732f323031332f30362f4d696e6563726166745f466f726d617474696e672e676966
   info2: items -> http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html
-  info3: $NONE$ -> if line is not needed
+  info3: $NONE$ -> if message-line is not needed
   info4: $PlayerName$ -> name of player
   info5: $World$ -> name of world
   info6: $ItemName$ -> itemname
   info7: $ItemAmount$ -> amount
-  
-command-infos:
-  rgive: everyone
-  rreload: op only
-  rdisable: op only
-  rreset: op only
+  info8: type=true -> send message to player only / type=false -> send message to everyone
   
 debug: false
